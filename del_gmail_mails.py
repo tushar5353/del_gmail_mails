@@ -9,6 +9,11 @@ import pandas as pd
 import mysql.connector
 
 from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+
 def main():
     """
     Driver Function
@@ -22,10 +27,7 @@ def main():
     service = create_service(creds)
     labels = list_labels(service)
     connection = get_connection()
-    write_messages(service, labels, connection)from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
+    write_messages(service, labels, connection)
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
